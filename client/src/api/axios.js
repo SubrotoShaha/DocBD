@@ -1,0 +1,44 @@
+import axios from 'axios';
+
+/**
+ * Configured Axios instance for API calls
+ * - Base URL points to backend server
+ * - Request interceptor attaches JWT token
+ * - Response interceptor handles 401 (auto logout)
+ */
+const api = axios.create({
+  baseURL: 'http://localhost:5000/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// ─── Request Interceptor: Attach JWT Token ───────────────────
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('docbd_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// ─── Response Interceptor: Handle 401 ────────────────────────
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('docbd_token');
+      localStorage.removeItem('docbd_user');
+      // Only redirect if not already on login/register page
+      if (!window.location.pathname.includes('/login') && !window.location.pathname.includes('/register')) {
+        window.location.href = '/login';
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default api;
