@@ -33,7 +33,22 @@ export default function DoctorCard({ doctor }) {
         <div className="p-5">
           {/* Header with avatar */}
           <div className="flex items-start gap-4 mb-4">
-            <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${avatarGradient} flex items-center justify-center shadow-lg shrink-0`}>
+            {doctor.profilePhoto ? (
+              <img
+                src={doctor.profilePhoto}
+                alt={name}
+                className="w-14 h-14 rounded-xl object-cover shadow-md shrink-0 border border-slate-200"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'flex';
+                }}
+              />
+            ) : null}
+            <div
+              className={`w-14 h-14 rounded-xl bg-gradient-to-br ${avatarGradient} items-center justify-center shadow-lg shrink-0 ${
+                doctor.profilePhoto ? 'hidden' : 'flex'
+              }`}
+            >
               <span className="text-white font-bold text-lg">{initials}</span>
             </div>
             <div className="flex-1 min-w-0">

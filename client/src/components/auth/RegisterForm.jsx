@@ -93,14 +93,14 @@ export default function RegisterForm() {
       <div>
         <label className="block text-sm font-semibold text-slate-700 mb-1.5">Full Name</label>
         <div className="relative">
-          <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your full name"
-            className="input-field pl-10"
+            className="input-field !pl-11"
             required
           />
         </div>
@@ -110,14 +110,14 @@ export default function RegisterForm() {
       <div>
         <label className="block text-sm font-semibold text-slate-700 mb-1.5">Email Address</label>
         <div className="relative">
-          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             placeholder="you@example.com"
-            className="input-field pl-10"
+            className="input-field !pl-11"
             required
           />
         </div>
@@ -127,20 +127,20 @@ export default function RegisterForm() {
       <div>
         <label className="block text-sm font-semibold text-slate-700 mb-1.5">Password</label>
         <div className="relative">
-          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
           <input
             type={showPassword ? 'text' : 'password'}
             name="password"
             value={formData.password}
             onChange={handleChange}
             placeholder="Min. 6 characters"
-            className="input-field pl-10 pr-10"
+            className="input-field !pl-11 !pr-11"
             required
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors z-10"
           >
             {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
@@ -151,14 +151,14 @@ export default function RegisterForm() {
       <div>
         <label className="block text-sm font-semibold text-slate-700 mb-1.5">Confirm Password</label>
         <div className="relative">
-          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
           <input
             type={showPassword ? 'text' : 'password'}
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
             placeholder="Re-enter your password"
-            className="input-field pl-10"
+            className="input-field !pl-11"
             required
           />
         </div>

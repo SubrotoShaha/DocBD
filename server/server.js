@@ -1,3 +1,10 @@
+/**
+ * Symptom-Based Doctor Recommendation System for Bangladesh
+ * Author: Subroto Kumar Shaha | Student of CSE
+ * Brand: Steps With SP
+ * Email: subrotokumarshaha007@gmail.com
+ */
+
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -12,8 +19,18 @@ connectDB();
 const app = express();
 
 // ─── Middleware ───────────────────────────────────────────────
+const allowedOrigins = process.env.CLIENT_URL
+  ? [process.env.CLIENT_URL, 'http://localhost:5173', 'http://localhost:3000']
+  : ['http://localhost:5173', 'http://localhost:3000', '*'];
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Vite dev server
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl) or if allowed
+    if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(null, true); // Permissive CORS for easy university demo
+  },
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
@@ -48,6 +65,12 @@ app.use((err, req, res, next) => {
 // ─── Start Server ────────────────────────────────────────────
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 DocBD Server running on port ${PORT}`);
-  console.log(`📍 API: http://localhost:${PORT}/api`);
+  console.log('\n══════════════════════════════════════════════════');
+  console.log('  🏥 DocBD — Symptom-Based Doctor Recommendation');
+  console.log('  👨‍💻 Developed by Subroto Kumar Shaha');
+  console.log('  🎓 Student of CSE | Steps With SP');
+  console.log('══════════════════════════════════════════════════');
+  console.log(`  🚀 Server running on port ${PORT}`);
+  console.log(`  📍 API: http://localhost:${PORT}/api`);
+  console.log('══════════════════════════════════════════════════\n');
 });

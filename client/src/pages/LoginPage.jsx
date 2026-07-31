@@ -2,21 +2,33 @@ import { HeartPulse } from 'lucide-react';
 import LoginForm from '../components/auth/LoginForm';
 
 /**
- * Login Page with branded card layout
+ * Login Page — professional medical card design
  */
 export default function LoginPage() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-12 px-4 bg-gradient-to-br from-slate-50 to-blue-50/50">
-      <div className="w-full max-w-md animate-fade-in">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-12 px-4 bg-section-alt relative overflow-hidden">
+      {/* Decorative blobs */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-blue-100/70 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-100/60 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl pointer-events-none" />
+
+      <div className="relative w-full max-w-md animate-fade-in z-10">
         {/* Card */}
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-teal-500 px-8 py-8 text-center">
-            <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <HeartPulse className="w-8 h-8 text-white" />
+        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 overflow-hidden">
+          {/* Branded header */}
+          <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-teal-600 px-8 py-10 text-center overflow-hidden">
+            {/* Subtle pattern */}
+            <div className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0%, transparent 50%)',
+              }}
+            />
+            <div className="relative">
+              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-5 p-2 shadow-lg ring-4 ring-white/20">
+                <img src="/favicon.svg" alt="DocBD Logo" className="w-full h-full object-contain" />
+              </div>
+              <h1 className="text-2xl font-extrabold text-white mb-1.5">Welcome Back</h1>
+              <p className="text-blue-100 text-sm font-medium">Sign in to your DocBD account</p>
             </div>
-            <h1 className="text-2xl font-bold text-white mb-1">Welcome Back</h1>
-            <p className="text-blue-100 text-sm">Sign in to your DocBD account</p>
           </div>
 
           {/* Form */}

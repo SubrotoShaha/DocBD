@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 56" fill="none">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" />
+      <stop offset="100%" stop-color="#00C4B4" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="45%" stop-color="#1D4ED8" />
+      <stop offset="70%" stop-color="#00A896" />
+      <stop offset="100%" stop-color="#00C4B4" />
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle Icon -->
+  <rect x="4" y="4" width="48" height="48" rx="14" fill="url(#iconGrad)" />
+
+  <!-- Heart Shape -->
+  <path d="M 28 39.5 C 28 39.5 15.5 31 15.5 22.5 C 15.5 17.5 19.2 14 23.8 14 C 26.6 14 28 15.6 28 15.6 C 28 15.6 29.4 14 32.2 14 C 36.8 14 40.5 17.5 40.5 22.5 C 40.5 31 28 39.5 28 39.5 Z"
+        stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+  <!-- Heartbeat ECG line -->
+  <path d="M 19 23.5 L 23 23.5 L 25 19.5 L 28 28 L 30.5 21 L 32.5 23.5 L 37 23.5"
+        stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+  <!-- DocBD Text -->
+  <text x="64" y="38" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="33" letter-spacing="-0.5px" fill="url(#textGrad)">DocBD</text>
+</svg>

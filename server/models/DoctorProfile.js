@@ -1,3 +1,9 @@
+/**
+ * Symptom-Based Doctor Recommendation System for Bangladesh
+ * Author: Subroto Kumar Shaha | Student of CSE
+ * Brand: Steps With SP
+ */
+
 const mongoose = require('mongoose');
 
 /**
@@ -42,6 +48,10 @@ const doctorProfileSchema = new mongoose.Schema({
   bio: {
     type: String,
     maxlength: [1000, 'Bio cannot exceed 1000 characters'],
+    default: '',
+  },
+  profilePhoto: {
+    type: String,
     default: '',
   },
   consultationFee: {

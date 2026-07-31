@@ -1,3 +1,9 @@
+/**
+ * Symptom-Based Doctor Recommendation System for Bangladesh
+ * Author: Subroto Kumar Shaha | Student of CSE
+ * Brand: Steps With SP
+ */
+
 import { createContext, useContext, useState, useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import api from '../api/axios';

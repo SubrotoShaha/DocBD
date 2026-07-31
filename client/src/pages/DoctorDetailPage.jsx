@@ -74,7 +74,18 @@ export default function DoctorDetailPage() {
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-teal-500 px-8 py-10">
             <div className="flex flex-col sm:flex-row items-center gap-6">
-              <div className="w-24 h-24 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center">
+              {doctor.profilePhoto ? (
+                <img
+                  src={doctor.profilePhoto}
+                  alt={name}
+                  className="w-24 h-24 rounded-2xl object-cover shadow-lg border-2 border-white/40 shrink-0"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling.style.display = 'flex';
+                  }}
+                />
+              ) : null}
+              <div className={`w-24 h-24 rounded-2xl bg-white/20 backdrop-blur-md items-center justify-center shrink-0 ${doctor.profilePhoto ? 'hidden' : 'flex'}`}>
                 <span className="text-3xl font-bold text-white">{initials}</span>
               </div>
               <div className="text-center sm:text-left">

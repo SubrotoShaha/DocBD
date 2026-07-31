@@ -40,12 +40,25 @@ export default function SymptomInput({ onSearch, initialQuery = '' }) {
     }
   }, [initialQuery]);
 
-  // Filter suggestions based on input
+  // Filter suggestions based on input (word boundary matching)
   useEffect(() => {
-    if (inputValue.trim()) {
-      const filtered = allSymptoms.filter(
-        s => s.includes(inputValue.toLowerCase()) && !selectedSymptoms.includes(s)
-      );
+    const query = inputValue.trim().toLowerCase();
+    if (query.length >= 1) {
+      const filtered = allSymptoms.filter(s => {
+        if (selectedSymptoms.includes(s.toLowerCase())) return false;
+        const words = s.toLowerCase().split(/\s+/);
+        return words.some(w => w.startsWith(query));
+      });
+      
+      // Prioritize symptoms that start with the query, then alphabetical
+      filtered.sort((a, b) => {
+        const aStarts = a.toLowerCase().startsWith(query);
+        const bStarts = b.toLowerCase().startsWith(query);
+        if (aStarts && !bStarts) return -1;
+        if (!aStarts && bStarts) return 1;
+        return a.localeCompare(b);
+      });
+
       setSuggestions(filtered.slice(0, 8));
       setShowSuggestions(true);
     } else {

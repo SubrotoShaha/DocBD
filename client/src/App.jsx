@@ -1,3 +1,10 @@
+/**
+ * Symptom-Based Doctor Recommendation System for Bangladesh
+ * Author: Subroto Kumar Shaha | Student of CSE
+ * Brand: Steps With SP
+ * Email: subrotokumarshaha007@gmail.com
+ */
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
