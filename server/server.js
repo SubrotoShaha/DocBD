@@ -44,6 +44,9 @@ app.use('/api/appointments', require('./routes/appointments'));
 app.use('/api/admin', require('./routes/admin'));
 
 // ─── Health Check ────────────────────────────────────────────
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'DocBD Backend Server is Live' });
+});
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'DocBD API is running' });
 });
